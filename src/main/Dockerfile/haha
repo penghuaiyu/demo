@@ -1,0 +1,12 @@
+#FROM java:8
+#MAINTAINER phy
+#ADD demo-0.0.1-SNAPSHOT.jar demo.jar
+#EXPOSE 8888
+#ENTRYPOINT ["java","-jar","demo.jar"]
+
+
+
+FROM frolvlad/alpine-oraclejdk8:slim
+VOLUME /tmp
+ADD docker-spring-boot-1.0.0.jar app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
